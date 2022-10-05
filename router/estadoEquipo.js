@@ -61,4 +61,17 @@ router.put('/:estadoequipoId',async function(req,res){
     }
 });
 
+router.get('/:estadoEquipoId',async function(req,res){
+    try {
+      const estadoEquipo=await EstadoEquipo.findById(req.params.estadoEquipoId);
+      if(!estadoEquipo){
+       return res.status(404).send('estadoEquipo No existe');
+      }
+      res.send(estadoEquipo);
+    } catch (error) {
+         console.log(error);
+         res.status(500).send ('Error');
+    }
+ });
+
 module.exports=router;

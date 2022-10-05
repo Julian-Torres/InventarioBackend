@@ -1,10 +1,10 @@
-const express =require('express');
+const express = require('express');
 const {getConnection} =require('./DB/db-connection-mongo');
 const cors =require ('cors');
 require('dotenv').config();
 
 const app= express();
-const port=process.env.PORT;
+const port=4000;
 app.use(cors());
 
 getConnection();
@@ -18,5 +18,5 @@ app.use('/tipo-equipo',require('./router/tipoequipo'));
 app.use('/inventario',require('./router/inventario')); 
 
 app.listen(port,()=>{
-    console.log("Se oye el puerto "+port);
+    console.log("Se oye el puerto "+ port);
 }); 

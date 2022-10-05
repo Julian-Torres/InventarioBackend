@@ -62,4 +62,17 @@ router.put('/:marcaId', async function(req,res){
     }
 });
 
+router.get('/:marcaId',async function(req,res){
+    try {
+      const marca=await Marca.findById(req.params.marcaId);
+      if(!inventario){
+       return res.status(404).send('Marca No existe');
+      }
+      res.send(marca);
+    } catch (error) {
+         console.log(error);
+         res.status(500).send ('Error');
+    }
+ });
+
 module.exports=router;
