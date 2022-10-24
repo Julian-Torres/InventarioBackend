@@ -91,4 +91,18 @@ router.get('/:usuarioId',async function(req,res){
     }
  });
 
+router.delete('/:usuarioId',async function(req,res){
+    try{
+        let usuario=await Usuario.findByIdAndRemove(req.params.usuarioId);
+        if (!usuario){
+            return res.status(400).send('usuario no existe');
+        }
+        
+        res.send("usuario Eliminado");
+    }catch(error){
+        console.log(error);
+        res.status(500).send ('Error');
+    }
+ });
+
 module.exports=router; 
