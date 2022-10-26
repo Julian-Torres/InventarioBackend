@@ -75,4 +75,18 @@ router.get('/:marcaId',async function(req,res){
     }
  });
 
+ router.delete('/:marcaId',async function(req,res){
+    try{
+        let marca=await MArca.findByIdAndRemove(req.params.marcaId);
+        if (!marca){
+            return res.status(400).send('marca no existe');
+        }
+        
+        res.send("marca Eliminada");
+    }catch(error){
+        console.log(error);
+        res.status(500).send ('Error');
+    }
+ });
+
 module.exports=router;
