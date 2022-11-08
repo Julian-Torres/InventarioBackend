@@ -77,7 +77,7 @@ router.get('/:marcaId',async function(req,res){
 
  router.delete('/:marcaId',async function(req,res){
     try{
-        let marca=await MArca.findByIdAndRemove(req.params.marcaId);
+        let marca=await Marca.findByIdAndRemove(req.params.marcaId);
         if (!marca){
             return res.status(400).send('marca no existe');
         }
